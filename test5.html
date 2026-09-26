@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinh Tế Thị Trường Định Hướng XHCN - Chương 5</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 15% 15%, #1e1b4b 0%, transparent 45%),
+                  radial-gradient(circle at 85% 25%, #0f172a 0%, transparent 50%),
+                  radial-gradient(circle at 50% 80%, #064e3b 0%, transparent 40%),
+                  #090d16;
+      background-attachment: fixed;
+      color: #f1f5f9;
+    }
+    .display-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .aurora-glass {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+    .bento-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: rgba(94, 234, 212, 0.4);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="selection:bg-teal-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION BAR -->
+  <nav class="sticky top-0 z-50 aurora-glass border-b border-white/10 px-6 sm:px-12 py-3.5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-500 to-indigo-500 text-white flex items-center justify-center font-bold shadow-lg shadow-teal-500/20">
+        <i data-lucide="layers" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h1 class="font-extrabold text-sm sm:text-base tracking-tight flex items-center gap-2">
+          KINH TẾ CHÍNH TRỊ <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/30">CHƯƠNG 5</span>
+        </h1>
+        <p class="text-[11px] text-slate-400">Thể Chế KTTT & Các Quan Hệ Lợi Ích Kinh Tế</p>
+      </div>
+    </div>
+
+    <!-- Actions & Nhạc nền -->
+    <div class="flex items-center gap-3">
+      <button id="music-btn" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-teal-400/50 text-xs text-slate-300 transition shadow-inner">
+        <i id="music-icon" data-lucide="volume-x" class="w-4 h-4 text-slate-400"></i>
+        <span id="music-text" class="hidden sm:inline font-medium">Bật Nhạc Nhẹ</span>
+      </button>
+
+      <a href="#summary" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition hidden sm:inline">
+        Tóm Tắt
+      </a>
+      <a href="#mindmap-section" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition hidden sm:inline">
+        Vẽ Sơ Đồ
+      </a>
+      <a href="#game" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-teal-400 to-emerald-500 hover:from-teal-300 hover:to-emerald-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 shadow-lg shadow-teal-500/20">
+        <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+        <span>10 Câu Trắc Nghiệm</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-400/20 text-teal-300 text-xs font-medium mb-6">
+      <i data-lucide="sparkles" class="w-4 h-4"></i> Nền Tảng Học Tập Trực Quan & Tương Tác
+    </div>
+    <h2 class="display-font text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-5">
+      Kinh Tế Thị Trường Định Hướng XHCN <br />
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-cyan-200 to-indigo-300">
+        & Các Quan Hệ Lợi Ích Kinh Tế
+      </span>
+    </h2>
+    <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+      Khám phá bản chất thể chế kinh tế hiện đại tại Việt Nam và nghệ thuật kết hợp hài hòa ba tầng lợi ích: 
+      <strong class="text-slate-200">Cá nhân – Tập thể – Xã hội</strong>.
+    </p>
+  </section>
+
+  <!-- TỔNG QUAN BENTO GRID (TÓM TẮT TRỌNG TÂM) -->
+  <section id="summary" class="max-w-6xl mx-auto px-6 mb-16">
+    <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+      <div>
+        <h3 class="display-font text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <i data-lucide="book-open" class="text-teal-400 w-6 h-6"></i> Tóm Tắt Trọng Tâm
+        </h3>
+        <p class="text-xs text-slate-400 mt-1">Nắm bắt bản chất Phần II (Hoàn thiện thể chế) và Phần III.1 (Lợi ích kinh tế)</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Thẻ 1: Khái niệm & Mục tiêu -->
+      <div class="bento-card p-6 border-l-4 border-l-teal-500">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-teal-300 bg-teal-500/10 px-2.5 py-1 rounded">Phần II: Thể Chế</span>
+        <h4 class="font-bold text-white text-base mt-3 mb-2">Thể Chế KTTT Định Hướng XHCN</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Là hệ thống quy tắc, luật pháp, cơ chế chính sách điều hành các quan hệ kinh tế nhằm thúc đẩy sản xuất, đồng thời bảo đảm định hướng XHCN: 
+          <span class="text-teal-300 font-medium">dân giàu, nước mạnh, dân chủ, công bằng, văn minh</span>.
+        </p>
+      </div>
+
+      <!-- Thẻ 2: 4 Trụ cột hoàn thiện -->
+      <div class="bento-card p-6 border-l-4 border-l-indigo-500">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-300 bg-indigo-500/10 px-2.5 py-1 rounded">Cải Cách Đột Phá</span>
+        <h4 class="font-bold text-white text-base mt-3 mb-2">4 Trụ Cột Hoàn Thiện Thể Chế</h4>
+        <ul class="text-xs text-slate-300 space-y-1.5">
+          <li>• <strong>Sở hữu:</strong> KT tư nhân là động lực quan trọng; tinh gọn DNNN.</li>
+          <li>• <strong>Thị trường:</strong> Vận hành đồng bộ các loại thị trường, chống độc quyền.</li>
+          <li>• <strong>Xã hội:</strong> Tăng trưởng đi đôi với tiến bộ, an sinh xã hội & kinh tế xanh.</li>
+          <li>• <strong>Quản lý:</strong> Chuyển sang Nhà nước kiến tạo, điều hành bằng pháp quyền.</li>
+        </ul>
+      </div>
+
+      <!-- Thẻ 3: Bản chất lợi ích -->
+      <div class="bento-card p-6 border-l-4 border-l-amber-500">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded">Phần III.1: Lợi Ích</span>
+        <h4 class="font-bold text-white text-base mt-3 mb-2">Động Lực Kinh Tế Cốt Lõi</h4>
+        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+          Lợi ích kinh tế là lợi ích vật chất thu được khi tham gia các hoạt động kinh tế, là <strong>động lực trực tiếp</strong> của mọi chủ thể:
+        </p>
+        <div class="grid grid-cols-2 gap-2 text-[11px]">
+          <div class="bg-slate-900/80 p-2 rounded border border-white/5 flex justify-between">
+            <span class="text-slate-400">Lao động:</span>
+            <strong class="text-teal-300">Tiền Lương</strong>
+          </div>
+          <div class="bg-slate-900/80 p-2 rounded border border-white/5 flex justify-between">
+            <span class="text-slate-400">Doanh nghiệp:</span>
+            <strong class="text-teal-300">Lợi Nhuận</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SƠ ĐỒ TƯ DUY: CANVAS TỰ ĐỘNG VẼ RA (ANIMATED CANVAS MINDMAP) -->
+  <section id="mindmap-section" class="max-w-6xl mx-auto px-6 mb-20">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4 border-b border-white/10 pb-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <i data-lucide="pen-tool" class="w-6 h-6 text-teal-400"></i>
+          <h3 class="display-font text-2xl font-bold text-white tracking-tight">Sơ Đồ Tư Duy Tự Động Vẽ</h3>
+        </div>
+        <p class="text-xs text-slate-400 mt-1">Mô phỏng nét vẽ vector trực quan các nhánh kiến thức theo thời gian thực</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="startDrawingAnimation()" class="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition shadow-lg shadow-teal-500/30">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+          <span>Vẽ Lại Sơ Đồ (Play)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Khung Canvas -->
+    <div class="aurora-glass rounded-2xl p-4 sm:p-6 overflow-hidden relative">
+      <div class="absolute top-4 right-4 z-10 flex items-center gap-2">
+        <span id="canvas-status" class="text-[11px] px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/30 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span> Đang phác thảo...
+        </span>
+      </div>
+      
+      <div class="w-full overflow-x-auto">
+        <canvas id="mindmap-canvas" width="1050" height="580" class="mx-auto block"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI GAME 10 CÂU TRẮC NGHIỆM -->
+  <section id="game" class="max-w-3xl mx-auto px-6 mb-20">
+    <div class="text-center mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-teal-300 bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-full">
+        Challenge Hub
+      </span>
+      <h3 class="display-font text-2xl sm:text-3xl font-extrabold text-white mt-3">Đấu Trường Kiến Thức (10 Câu)</h3>
+      <p class="text-xs text-slate-400 mt-1">Kiểm tra mức độ thấu hiểu của bạn về thể chế và quan hệ lợi ích kinh tế</p>
+    </div>
+
+    <div class="aurora-glass rounded-2xl p-6 sm:p-8 relative">
+      <!-- Quiz Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-1 rounded bg-teal-500/20 text-teal-300 font-bold border border-teal-500/40" id="q-number">
+            Câu 1 / 10
+          </span>
+          <span class="text-slate-400 font-medium hidden sm:inline" id="q-category">Thể chế kinh tế</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-400">Điểm:</span>
+          <span class="text-base font-extrabold text-teal-300" id="q-score">0</span>
+        </div>
+      </div>
+
+      <!-- Question Text -->
+      <div class="py-5">
+        <h4 id="q-text" class="text-base sm:text-lg font-bold text-slate-100 leading-snug min-h-[50px]">
+          Đang tải câu hỏi...
+        </h4>
+      </div>
+
+      <!-- Options -->
+      <div id="q-options" class="space-y-2.5">
+        <!-- Render bằng JavaScript -->
+      </div>
+
+      <!-- Feedback Area -->
+      <div id="q-feedback" class="mt-5 p-4 rounded-xl text-xs sm:text-sm hidden"></div>
+
+      <!-- Next Button -->
+      <div class="mt-6 flex justify-end">
+        <button id="q-next-btn" onclick="nextQuestion()" class="hidden px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-400 to-emerald-500 hover:from-teal-300 hover:to-emerald-400 text-slate-950 font-bold text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-teal-500/20">
+          <span>Câu Tiếp Theo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-xs text-slate-500 py-6 border-t border-white/5">
+    © 2026 Giáo Trình Kinh Tế Chính Trị Mác - Lênin (Chương 5)
+  </footer>
+
+  <!-- SCRIPT LOGIC: CANVAS MINDMAP ANIMATION, AUDIO & QUIZ -->
+  <script>
+    lucide.createIcons();
+
+    /* =========================================================================
+       1. VẼ SƠ ĐỒ TƯ DUY CANVAS THEO THỜI GIAN THỰC (ANIMATED DRAWING)
+       ========================================================================= */
+    const canvas = document.getElementById('mindmap-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const treeData = {
+      root: { x: 525, y: 70, w: 380, h: 56, title: "CHƯƠNG 5: KTTT ĐỊNH HƯỚNG XHCN", sub: "Mục tiêu: Dân giàu, nước mạnh, công bằng, văn minh", color: "#14b8a6" },
+      branches: [
+        {
+          id: "left",
+          x: 270, y: 190, w: 320, h: 48,
+          title: "PHẦN II: HOÀN THIỆN THỂ CHẾ",
+          sub: "Quy tắc, luật pháp điều tiết kinh tế",
+          color: "#38bdf8",
+          children: [
+            { x: 140, y: 310, w: 230, h: 72, title: "1. Lý Do Cần Hoàn Thiện", bullets: ["↳ [•] Luật còn chồng chéo, vướng mắc", "↳ [•] Thị trường phát triển chưa đồng bộ", "↳ [•] Áp lực hội nhập quốc tế sâu rộng"] },
+            { x: 140, y: 440, w: 230, h: 96, title: "2. Bốn Trụ Cột Cốt Lõi", bullets: ["↳ ① Sở hữu & KT tư nhân là động lực", "↳ ② Vận hành đồng bộ các thị trường", "↳ ③ Gắn tăng trưởng với an sinh, môi trường", "↳ ④ Xây dựng Nhà nước kiến tạo"] }
+          ]
+        },
+        {
+          id: "right",
+          x: 780, y: 190, w: 320, h: 48,
+          title: "PHẦN III.1: QUAN HỆ LỢI ÍCH",
+          sub: "Động lực trực tiếp của hành vi kinh tế",
+          color: "#818cf8",
+          children: [
+            { x: 670, y: 310, w: 240, h: 76, title: "1. Biểu Hiện Lợi Ích", bullets: ["↳ [•] Người LĐ: Tiền lương / Công", "↳ [•] Doanh nghiệp: Lợi nhuận", "↳ [•] Nhà nước: Thuế & Ngân sách"] },
+            { x: 670, y: 440, w: 240, h: 96, title: "2. Hai Mặt & Nguyên Tắc", bullets: ["↳ [🤝] Thống nhất: Cùng tạo ra của cải", "↳ [⚔️] Mâu thuẫn: Tranh chấp phân chia", "↳ [✦] Lợi ích cá nhân là cơ sở nền tảng", "↳ [✦] Lợi ích xã hội là kim chỉ nam"] }
+          ]
+        }
+      ]
+    };
+
+    let animationProgress = 0;
+    let animFrameId = null;
+
+    function drawRoundedRect(x, y, w, h, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + w - radius, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+      ctx.lineTo(x + w, y + h - radius);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+      ctx.lineTo(x + radius, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) {
+        ctx.fillStyle = fill;
+        ctx.fill();
+      }
+      if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+    }
+
+    function renderCanvasFrame(progress) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 1. Vẽ Gốc Trung Tâm
+      if (progress > 0.05) {
+        const root = treeData.root;
+        drawRoundedRect(root.x - root.w / 2, root.y, root.w, root.h, 14, "rgba(20, 184, 166, 0.15)", root.color);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 15px 'Space Grotesk', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(root.title, root.x, root.y + 24);
+        ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillStyle = "#94a3b8";
+        ctx.fillText(root.sub, root.x, root.y + 44);
+      }
+
+      // 2. Vẽ Đường Nối Tới 2 Nhánh Cấp 1
+      treeData.branches.forEach((b) => {
+        const rootBottomX = treeData.root.x;
+        const rootBottomY = treeData.root.y + treeData.root.h;
+
+        if (progress > 0.2) {
+          ctx.beginPath();
+          ctx.moveTo(rootBottomX, rootBottomY);
+          const cpY = (rootBottomY + b.y) / 2;
+          ctx.bezierCurveTo(rootBottomX, cpY, b.x, cpY, b.x, b.y);
+          ctx.strokeStyle = "rgba(148, 163, 184, 0.4)";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        // Vẽ Hộp Nhánh Cấp 1
+        if (progress > 0.35) {
+          drawRoundedRect(b.x - b.w / 2, b.y, b.w, b.h, 12, "rgba(15, 23, 42, 0.8)", b.color);
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 13px 'Space Grotesk', sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(b.title, b.x, b.y + 20);
+          ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
+          ctx.fillStyle = "#94a3b8";
+          ctx.fillText(b.sub, b.x, b.y + 38);
+        }
+
+        // 3. Vẽ Nhánh Con Cấp 2
+        b.children.forEach((c, idx) => {
+          const parentBottomX = b.x;
+          const parentBottomY = b.y + b.h;
+
+          if (progress > 0.55 + idx * 0.15) {
+            ctx.beginPath();
+            ctx.moveTo(parentBottomX, parentBottomY);
+            const cpY2 = (parentBottomY + c.y) / 2;
+            const targetX = c.x + c.w / 2;
+            ctx.bezierCurveTo(parentBottomX, cpY2, targetX, cpY2, targetX, c.y);
+            ctx.strokeStyle = "rgba(94, 234, 212, 0.3)";
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            drawRoundedRect(c.x, c.y, c.w, c.h, 10, "rgba(15, 23, 42, 0.75)", "rgba(255, 255, 255, 0.1)");
+
+            ctx.fillStyle = b.color;
+            ctx.font = "bold 12px 'Space Grotesk', sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText(c.title, c.x + 12, c.y + 18);
+
+            ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
+            ctx.fillStyle = "#cbd5e1";
+            c.bullets.forEach((bullet, bIdx) => {
+              ctx.fillText(bullet, c.x + 12, c.y + 36 + bIdx * 18);
+            });
+          }
+        });
+      });
+    }
+
+    function animateDrawing() {
+      if (animationProgress < 1) {
+        animationProgress += 0.02;
+        renderCanvasFrame(animationProgress);
+        animFrameId = requestAnimationFrame(animateDrawing);
+      } else {
+        renderCanvasFrame(1);
+        const statusEl = document.getElementById('canvas-status');
+        statusEl.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> Hoàn tất nét vẽ`;
+        statusEl.className = "text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1";
+        lucide.createIcons();
+      }
+    }
+
+    function startDrawingAnimation() {
+      cancelAnimationFrame(animFrameId);
+      animationProgress = 0;
+      const statusEl = document.getElementById('canvas-status');
+      statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span> Đang phác thảo...`;
+      statusEl.className = "text-[11px] px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/30 flex items-center gap-1.5";
+      animateDrawing();
+    }
+
+    window.addEventListener('load', () => {
+      startDrawingAnimation();
+    });
+
+    /* =========================================================================
+       2. AMBIENT AUDIO (Web Audio API - Nhẹ nhàng, êm ái)
+       ========================================================================= */
+    let audioCtx = null;
+    let isPlaying = false;
+    let musicInterval = null;
+
+    const chords = [
+      [261.63, 329.63, 392.00, 493.88], // Cmaj7
+      [220.00, 261.63, 329.63, 392.00], // Am7
+      [174.61, 220.00, 261.63, 329.63], // Fmaj7
+      [196.00, 246.94, 293.66, 392.00]  // G7
+    ];
+    let chordIdx = 0;
+
+    function playSoftNote(freq, delay) {
+      if (!isPlaying || !audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.025, audioCtx.currentTime + delay + 0.12);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + delay + 2.8);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(audioCtx.currentTime + delay);
+      osc.stop(audioCtx.currentTime + delay + 2.9);
+    }
+
+    function playChord() {
+      if (!isPlaying || !audioCtx) return;
+      const chord = chords[chordIdx % chords.length];
+      chord.forEach((note, i) => {
+        playSoftNote(note, i * 0.15);
+      });
+      chordIdx++;
+    }
+
+    function toggleAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      const icon = document.getElementById('music-icon');
+      const text = document.getElementById('music-text');
+
+      if (!isPlaying) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        isPlaying = true;
+        playChord();
+        musicInterval = setInterval(playChord, 3400);
+        icon.className = "w-4 h-4 text-teal-400";
+        text.innerText = "Tắt Nhạc";
+      } else {
+        isPlaying = false;
+        clearInterval(musicInterval);
+        icon.className = "w-4 h-4 text-slate-400";
+        text.innerText = "Bật Nhạc Nhẹ";
+      }
+      lucide.createIcons();
+    }
+
+    /* =========================================================================
+       3. 10 CÂU HỎI TRẮC NGHIỆM CHƯƠNG 5
+       ========================================================================= */
+    const quizData = [
+      {
+        cat: "Thể Chế Kinh Tế",
+        q: "1. Thể chế kinh tế thị trường định hướng XHCN ở Việt Nam hướng tới mục tiêu tối thượng nào?",
+        opts: [
+          "A. Tối đa hóa lợi nhuận của các doanh nghiệp nhà nước",
+          "B. Dân giàu, nước mạnh, dân chủ, công bằng, văn minh",
+          "C. Triệt tiêu toàn bộ yếu tố kinh tế tư nhân",
+          "D. Độc quyền hóa các ngành thương mại"
+        ],
+        ans: 1,
+        exp: "Mục tiêu xuyên suốt là xây dựng xã hội 'Dân giàu, nước mạnh, dân chủ, công bằng, văn minh'."
+      },
+      {
+        cat: "Lý Do Hoàn Thiện",
+        q: "2. Tại sao Việt Nam phải hoàn thiện thể chế kinh tế thị trường định hướng XHCN?",
+        opts: [
+          "A. Do thể chế còn chưa đồng bộ, luật pháp chồng chéo và đòi hỏi từ hội nhập quốc tế",
+          "B. Do nền kinh tế nước ta đã đạt mức phát triển hoàn mỹ",
+          "C. Vì muốn bãi bỏ toàn bộ các quy luật thị trường tự nhiên",
+          "D. Do không còn doanh nghiệp nào hoạt động hiệu quả"
+        ],
+        ans: 0,
+        exp: "Hệ thống pháp luật còn vướng mắc và các loại thị trường chưa đồng bộ chính là lý do cốt lõi phải cải cách."
+      },
+      {
+        cat: "Thành Phần Kinh Tế",
+        q: "3. Trong nền kinh tế nước ta, thành phần kinh tế nào được xác định là 'một động lực quan trọng'?",
+        opts: [
+          "A. Kinh tế nhà nước",
+          "B. Kinh tế tập thể",
+          "C. Kinh tế tư nhân",
+          "D. Kinh tế có vốn đầu tư nước ngoài"
+        ],
+        ans: 2,
+        exp: "Kinh tế nhà nước giữ vai trò chủ đạo, còn Kinh tế tư nhân là một động lực quan trọng của nền kinh tế."
+      },
+      {
+        cat: "Yếu Tố Thị Trường",
+        q: "4. Hoàn thiện thể chế các yếu tố thị trường đòi hỏi phải thực hiện nguyên tắc cốt lõi nào?",
+        opts: [
+          "A. Bảo đảm cạnh tranh bình đẳng, minh bạch và chống độc quyền phi lý",
+          "B. Ưu tiên đặc quyền cho các doanh nghiệp thân quen",
+          "C. Cấm đoán các hình thức đầu tư gián tiếp",
+          "D. Nhà nước trực tiếp định đoạt mọi mức giá hàng ngày"
+        ],
+        ans: 0,
+        exp: "Cạnh tranh công bằng, bình đẳng là điều kiện sống còn để các loại thị trường vận hành hiệu quả."
+      },
+      {
+        cat: "Tiến Bộ Xã Hội",
+        q: "5. Việc gắn tăng trưởng kinh tế với công bằng xã hội được Đảng ta xác định như thế nào?",
+        opts: [
+          "A. Chờ kinh tế thật phát triển rồi mới phân phối lại phúc lợi",
+          "B. Thực hiện tiến bộ và công bằng xã hội ngay trong từng bước và từng chính sách",
+          "C. Chia đều tài sản theo kiểu cào bằng tuyệt đối",
+          "D. Ưu tiên tăng trưởng bằng mọi giá bất chấp sự hủy hoại môi trường"
+        ],
+        ans: 1,
+        exp: "Công bằng và an sinh xã hội phải song hành trong từng bước đi chứ không chờ đợi kinh tế giàu mới làm."
+      },
+      {
+        cat: "Lợi Ích Kinh Tế",
+        q: "6. Lợi ích kinh tế được hiểu một cách chuẩn xác là gì?",
+        opts: [
+          "A. Lợi ích vật chất thu được khi tham gia các hoạt động kinh tế",
+          "B. Bằng khen và danh hiệu biểu tượng",
+          "C. Quyền lực chính trị cá nhân",
+          "D. Trách nhiệm bắt buộc của mọi người dân"
+        ],
+        ans: 0,
+        exp: "Lợi ích kinh tế là lợi ích vật chất, đóng vai trò là động lực trực tiếp cho các hành vi sản xuất kinh doanh."
+      },
+      {
+        cat: "Biểu Hiện Lợi Ích",
+        q: "7. Biểu hiện lợi ích kinh tế trực tiếp nhất của người bán sức lao động là gì?",
+        opts: [
+          "A. Lợi nhuận sau thuế của công ty",
+          "B. Tiền lương và tiền công nhận được",
+          "C. Địa tô thu được từ đất đai",
+          "D. Khoản thu thuế của ngân sách"
+        ],
+        ans: 1,
+        exp: "Tiền lương/tiền công là phương tiện vật chất duy trì và tái tạo sức lao động của người làm công."
+      },
+      {
+        cat: "Tính Thống Nhất",
+        q: "8. Sự thống nhất trong quan hệ lợi ích giữa người lao động và doanh nghiệp biểu hiện qua điều gì?",
+        opts: [
+          "A. Cùng liên kết và hợp tác để tạo ra của cải và sản phẩm chung",
+          "B. Độc lập hoàn toàn, không liên quan đến nhau",
+          "C. Đều mong muốn doanh nghiệp chịu lỗ",
+          "D. Đều là người nắm giữ quyền quản lý nhà nước"
+        ],
+        ans: 0,
+        exp: "Họ gắn bó mật thiết: Có doanh nghiệp thì công nhân mới có việc làm; có công nhân thì doanh nghiệp mới sinh lợi."
+      },
+      {
+        cat: "Tính Mâu Thuẫn",
+        q: "9. Sự mâu thuẫn trong quan hệ lợi ích kinh tế nảy sinh chủ yếu từ căn nguyên nào?",
+        opts: [
+          "A. Nguồn lực có hạn dẫn đến sự giằng co khi phân chia chiếc bánh lợi ích",
+          "B. Do có quá nhiều người cùng làm việc",
+          "C. Do khoa học công nghệ phát triển quá nhanh",
+          "D. Do sự khác nhau về sở thích cá nhân"
+        ],
+        ans: 0,
+        exp: "Vì nguồn của cải là hữu hạn, sự gia tăng lợi nhuận của chủ có thể xung đột với mức tăng lương của thợ nếu không được điều hòa."
+      },
+      {
+        cat: "Quan Hệ Lợi Ích",
+        q: "10. Trong mối liên hệ giữa các tầng lợi ích, yếu tố nào là nền tảng cơ sở kích thích sự năng động?",
+        opts: [
+          "A. Lợi ích cá nhân",
+          "B. Lợi ích cục bộ của nhóm",
+          "C. Lợi ích chung chung không gắn với ai",
+          "D. Lợi ích của các quỹ quốc tế"
+        ],
+        ans: 0,
+        exp: "Lợi ích cá nhân là cơ sở, nền tảng bởi mỗi cá nhân là tế bào tạo nên sự sống và động lực cho toàn xã hội."
+      }
+    ];
+
+    let curIdx = 0;
+    let totalScore = 0;
+
+    function renderQuestion() {
+      const q = quizData[curIdx];
+      document.getElementById('q-number').innerText = `Câu ${curIdx + 1} / 10`;
+      document.getElementById('q-category').innerText = q.cat;
+      document.getElementById('q-text').innerText = q.q;
+
+      const optsBox = document.getElementById('q-options');
+      optsBox.innerHTML = '';
+
+      const feedback = document.getElementById('q-feedback');
+      feedback.className = "hidden";
+      document.getElementById('q-next-btn').classList.add('hidden');
+
+      q.opts.forEach((optText, optIdx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-teal-400/50 transition text-xs sm:text-sm text-slate-200 font-medium flex items-center justify-between";
+        btn.innerHTML = `<span>${optText}</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>`;
+        btn.onclick = () => checkAnswer(optIdx);
+        optsBox.appendChild(btn);
+      });
+      lucide.createIcons();
+    }
+
+    function checkAnswer(chosenIdx) {
+      const q = quizData[curIdx];
+      const buttons = document.getElementById('q-options').children;
+      const feedback = document.getElementById('q-feedback');
+
+      for (let b of buttons) {
+        b.disabled = true;
+        b.classList.add('cursor-not-allowed');
+      }
+
+      if (chosenIdx === q.ans) {
+        totalScore += 10;
+        document.getElementById('q-score').innerText = totalScore;
+        buttons[chosenIdx].className = "w-full text-left p-3.5 rounded-xl bg-teal-500/20 border border-teal-400 text-teal-200 text-xs sm:text-sm font-semibold";
+        feedback.className = "mt-5 p-4 rounded-xl text-xs sm:text-sm bg-teal-950/40 border border-teal-800 text-teal-300 block";
+        feedback.innerHTML = `<strong>✓ Đúng:</strong> ${q.exp}`;
+      } else {
+        buttons[chosenIdx].className = "w-full text-left p-3.5 rounded-xl bg-rose-500/20 border border-rose-400 text-rose-200 text-xs sm:text-sm font-semibold";
+        buttons[q.ans].className = "w-full text-left p-3.5 rounded-xl bg-teal-500/20 border border-teal-400 text-teal-200 text-xs sm:text-sm font-semibold";
+        feedback.className = "mt-5 p-4 rounded-xl text-xs sm:text-sm bg-rose-950/40 border border-rose-800 text-rose-300 block";
+        feedback.innerHTML = `<strong>✗ Chưa chính xác:</strong> ${q.exp}`;
+      }
+
+      document.getElementById('q-next-btn').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function nextQuestion() {
+      curIdx++;
+      if (curIdx < quizData.length) {
+        renderQuestion();
+      } else {
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.6 }
+        });
+
+        const gameBox = document.getElementById('game');
+        gameBox.innerHTML = `
+          <div class="aurora-glass rounded-2xl p-10 text-center max-w-lg mx-auto border border-teal-400/40 shadow-2xl">
+            <div class="w-14 h-14 rounded-2xl bg-teal-500/20 text-teal-300 border border-teal-400/40 inline-flex items-center justify-center mb-4">
+              <i data-lucide="award" class="w-7 h-7"></i>
+            </div>
+            <h3 class="display-font text-2xl font-bold text-white">Hoàn Thành Thử Thách!</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mt-1">Kết quả điểm số của bạn:</p>
+            <div class="display-font text-5xl font-black text-teal-300 my-4">${totalScore} / 100</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6 font-light">
+              Bạn đã nắm vững toàn bộ kiến thức trọng tâm Chương 5 về Thể chế kinh tế thị trường định hướng XHCN và Các quan hệ lợi ích kinh tế ở Việt Nam.
+            </p>
+            <button onclick="location.reload()" class="px-6 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold text-xs sm:text-sm transition">
+              Làm Lại Lần Nữa
+            </button>
+          </div>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    renderQuestion();
+  </script>
+</body>
+</html>
